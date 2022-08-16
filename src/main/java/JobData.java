@@ -109,6 +109,7 @@ public class JobData {
                     if (!jobResults.contains(anyListing)) {
                         jobResults.add(anyListing);
                     }
+                    break;
                 }
             }
             return jobResults;
