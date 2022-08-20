@@ -92,11 +92,6 @@ public class JobData {
      *
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
-     *
-     * My notes: return jobs, an arrayList of hashmaps (like printjobs); take in column and search value
-     * first create a new arraylist of hashmaps called jobs, then for each loop for each row in allJobs:
-     * let string aValue equal the row's column value, if aValue contains the search value, add the row to jobs
-     *
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
@@ -104,28 +99,25 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> jobResults = new ArrayList<>();
-            for (HashMap<String, String> anyListing: allJobs) {
-                if (anyListing.containsValue(value)) {
-                    if (!jobResults.contains(anyListing)) {
-                        jobResults.add(anyListing);
+
+            for (HashMap<String, String> jobListingRow: allJobs) {
+                ArrayList <String> jobListingRowValues = new ArrayList<>();
+                jobListingRowValues.addAll(jobListingRow.values());
+
+                for (String aValue: jobListingRowValues) {
+                    if (aValue.contains(value)) {
+                        if (!jobResults.contains(jobListingRow)) {
+                            jobResults.add(jobListingRow);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
             return jobResults;
-//        return null;
     }
 
+
     // TODO - implement this method
-    //should not contain duplicate jobs as search
-    // use a for loop for it to automatically search new column
-    //use findByColumnAndValue in a loop
-    //want to look for a search term in all of columns not just 1 column
-    //want to loop over whole row not just a column
-//      * My notes: return jobs, an arrayList of hashmaps (like printjobs); take in column and search value
-//     * first create a new arraylist of hashmaps called jobs, then for each loop for each row in allJobs:
-//            * let string aValue equal the row's column value, if aValue contains the search value, add the row to jobs
-//            *
 
     /**
      * Read in data from a CSV file and store it in a list
