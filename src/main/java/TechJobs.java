@@ -119,7 +119,7 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-//iterate over ArrayList someJobs of individual HashMap jobs with each job entry listing individual key value
+
         if (someJobs.size() > 0) {
             for (HashMap job : someJobs) {
                 System.out.println("\n" + "*****");
